@@ -1,0 +1,80 @@
+body {
+  margin: 30px;
+  padding: 30px;
+  font-family: Helvetica, Arial sans-serif;
+}
+.container {
+  margin: 20px auto;
+  padding: 30px;
+  width: 50%;
+  border-radius: 23px;
+  background: linear-gradient(
+    181.2deg,
+    rgb(181, 239, 249) 10.5%,
+    rgb(254, 254, 254) 86.8%
+  );
+}
+form.nosubmit {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+}
+
+input {
+  display: block;
+  margin: 0 auto;
+  padding: 9px 4px 9px 40px;
+  width: auto;
+  width: 374px;
+  border: 1px solid #555;
+  border-radius: 20px;
+  background: transparent
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E")
+    no-repeat 13px center;
+}
+input:hover {
+  cursor: text;
+}
+.blue {
+  border-radius: 20px;
+}
+.weather-condition {
+  display: block;
+  margin: 30px auto;
+  padding: 10px;
+  text-align: center;
+}
+.celsius {
+  font-size: 19px;
+  position: relative;
+  bottom: 8px;
+}
+.location {
+  text-align: center;
+  font-size: 30px;
+}
+p {
+  padding: 8px;
+  margin-left: 23px;
+  margin-bottom: -5px;
+  font-size: 15px;
+}
+.columns {
+  border: 1px solid #000;
+  border-radius: 17px;
+  margin: 10px;
+  padding: 30px;
+}
+.col {
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+  font-size: 19px;
+  line-height: 65px;
+}
+.col:hover {
+  background-color: rgb(236, 236, 236);
+  border-radius: 20px;
+  cursor: pointer;
+}
