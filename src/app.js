@@ -67,13 +67,12 @@ function showCurrent(response) {
 function showCurrentLoc(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiKey = "aa103043f0692bc32794207b314369d3";
-  let apiUrlCurrent = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  console.log(apiUrlCurrent);
+  let apiKeyCurrent = "aa103043f0692bc32794207b314369d3";
+  let apiUrlCurrent = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKeyCurrent}&units=metric`;
   axios.get(apiUrlCurrent).then(showCurrent);
 }
 function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(showCurrentLoc);
 }
-let blueButton = document.querySelector("button");
-blueButton.addEventListener("click", getCurrentLocation);
+let blueButton = document.querySelector("#btn");
+blueButton.addEventListener("submit", getCurrentLocation);
