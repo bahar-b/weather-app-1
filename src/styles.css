@@ -52,7 +52,11 @@ input:hover {
   font-size: 19px;
   position: relative;
   bottom: 8px;
-  text-decoration:none;
+  text-decoration: none;
+}
+.active {
+  color: #000;
+  cursor: default;
 }
 .location {
   text-align: center;

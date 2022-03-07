@@ -35,7 +35,12 @@ function showCurrentLocation(response) {
   showTempMax.innerHTML = `${maxTemp}`;
   let convertDescription = document.querySelector("h3");
   convertDescription.innerHTML = `${description}`;
-}
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    iconElement.setAttribute("alt", ` response.data.weather[0].description`);
+
 function showCity(event) {
   event.preventDefault();
   let apiKey = "aa103043f0692bc32794207b314369d3";
@@ -75,6 +80,8 @@ function getCurrentLocation() {
 
 function displayFahrenheit(event) {
   event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let tempElement = document.querySelector("#temp");
   let fahrenheitElement = (celsiusTemperature * 9) / 5 + 32;
   tempElement.innerHTML = Math.round(fahrenheitElement);
@@ -82,6 +89,8 @@ function displayFahrenheit(event) {
 
 function displayCelsius(event) {
   event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
   let tempElement = document.querySelector("#temp");
   tempElement.innerHTML = celsiusTemperature;
 }
