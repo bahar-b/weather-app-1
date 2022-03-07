@@ -5,7 +5,7 @@ body {
 }
 .container {
   margin: 20px auto;
-  margin-bottom: 0 ;
+  margin-bottom: 0;
   padding: 30px;
   padding-bottom: 0;
   width: 50%;
@@ -47,10 +47,12 @@ input:hover {
   padding: 10px;
   text-align: center;
 }
-.celsius {
+.celsius,
+.fahrenheit {
   font-size: 19px;
   position: relative;
   bottom: 8px;
+  text-decoration:none;
 }
 .location {
   text-align: center;

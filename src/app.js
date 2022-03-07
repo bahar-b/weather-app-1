@@ -21,14 +21,14 @@ if (minute < 10) {
 paragraph.innerHTML = ` ${day} ${hour}:${minute} `;
 
 function showCurrentLocation(response) {
-  let currentTemp = Math.round(response.data.main.temp);
+  celsiusTemperature = Math.round(response.data.main.temp);
   let minTemp = Math.round(response.data.main.temp_min);
   let maxTemp = Math.round(response.data.main.temp_max);
   let description = response.data.weather[0].description;
   document.querySelector("#cityName").innerHTML = response.data.name;
   document.querySelector("#countryName").innerHTML = response.data.sys.country;
   let convertTemp = document.querySelector("#temp");
-  convertTemp.innerHTML = `${currentTemp}`;
+  convertTemp.innerHTML = `${celsiusTemperature}`;
   let showTempMin = document.querySelector("#min");
   showTempMin.innerHTML = `${minTemp}`;
   let showTempMax = document.querySelector("#max");
@@ -59,8 +59,8 @@ function showCurrent(response) {
   showMax.innerHTML = `${max}`;
   let changeDescription = document.querySelector("h3");
   changeDescription.innerHTML = `${currentDescription}`;
-  let currentpos = document.querySelector("#location");
-  currentpos.innerHTML = `${currentCity}, ${currentCountry}`;
+  let currentPos = document.querySelector("#location");
+  currentPos.innerHTML = `${currentCity}, ${currentCountry}`;
 }
 function showCurrentLoc(position) {
   let lat = position.coords.latitude;
@@ -73,8 +73,27 @@ function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(showCurrentLoc);
 }
 
+function displayFahrenheit(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp");
+  let fahrenheitElement = (celsiusTemperature * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(fahrenheitElement);
+}
+
+function displayCelsius(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp");
+  tempElement.innerHTML = celsiusTemperature;
+}
+
 let element = document.querySelector("#form-input");
 element.addEventListener("submit", showCity);
 
 let blueButton = document.querySelector("#btn");
 blueButton.addEventListener("click", getCurrentLocation);
+
+let celsiusTemperature = null;
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", displayFahrenheit);
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", displayCelsius);
