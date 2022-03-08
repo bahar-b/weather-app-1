@@ -19,15 +19,16 @@ body {
 form.nosubmit {
   display: block;
   margin: 0 auto;
+ margin-left: 80px;
   padding: 0;
   border: none;
 }
 
 input {
   display: block;
-  margin: 0 auto;
+  margin-left: 0;
+  margin-right: 0;
   padding: 9px 4px 9px 40px;
-  width: auto;
   width: 374px;
   border: 1px solid #555;
   border-radius: 20px;
@@ -38,16 +39,14 @@ input {
 input:hover {
   cursor: text;
 }
-.blue {
-  border-radius: 20px;
-}
+
 .weather-condition {
   display: block;
   margin: 30px auto;
   padding: 10px;
   text-align: center;
 }
-h1{
+h1 {
   line-height: 1.7;
 }
 .celsius,

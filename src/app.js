@@ -20,6 +20,12 @@ if (minute < 10) {
 }
 paragraph.innerHTML = ` ${day} ${hour}:${minute} `;
 
+function showForcast(coordinates) {
+  let apiKey = "aa103043f0692bc32794207b314369d3";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForcast);
+}
+
 function showCurrentLocation(response) {
   celsiusTemperature = Math.round(response.data.main.temp);
   let minTemp = Math.round(response.data.main.temp_min);
@@ -41,6 +47,7 @@ function showCurrentLocation(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", ` response.data.weather[0].description`);
+  showForcast(response.data.coord);
 }
 function showCity(event) {
   event.preventDefault();
@@ -48,6 +55,7 @@ function showCity(event) {
   let city = document.querySelector("#search-input").value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showCurrentLocation);
+  console.log(showCity);
 }
 
 function showCurrent(response) {
@@ -67,6 +75,12 @@ function showCurrent(response) {
   changeDescription.innerHTML = `${currentDescription}`;
   let currentPos = document.querySelector("#location");
   currentPos.innerHTML = `${currentCity}, ${currentCountry}`;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", ` response.data.weather[0].description`);
 }
 function showCurrentLoc(position) {
   let lat = position.coords.latitude;
@@ -99,7 +113,7 @@ function displayCelsius(event) {
 function displayForcast() {
   let forcastElement = document.querySelector("#forcast");
   let forcastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tue", "Wed","Thu"];
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
   days.forEach(function (day) {
     forcastHTML =
       forcastHTML +
@@ -118,9 +132,6 @@ function displayForcast() {
 let element = document.querySelector("#form-input");
 element.addEventListener("submit", showCity);
 
-let blueButton = document.querySelector("#btn");
-blueButton.addEventListener("click", getCurrentLocation);
-
 let celsiusTemperature = null;
 let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", displayFahrenheit);
@@ -128,3 +139,4 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsius);
 
 displayForcast();
+getCurrentLocation();
