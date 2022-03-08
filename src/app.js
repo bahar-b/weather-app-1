@@ -63,7 +63,7 @@ function showCurrent(response) {
   showMin.innerHTML = `${min}`;
   let showMax = document.querySelector("#max");
   showMax.innerHTML = `${max}`;
-  let changeDescription = document.querySelector("h3");
+  let changeDescription = document.querySelector("#weather-description");
   changeDescription.innerHTML = `${currentDescription}`;
   let currentPos = document.querySelector("#location");
   currentPos.innerHTML = `${currentCity}, ${currentCountry}`;
@@ -96,6 +96,25 @@ function displayCelsius(event) {
   tempElement.innerHTML = celsiusTemperature;
 }
 
+function displayForcast() {
+  let forcastElement = document.querySelector("#forcast");
+  let forcastHTML = `<div class="row">`;
+  let days = ["Sun", "Mon", "Tue", "Wed","Thu"];
+  days.forEach(function (day) {
+    forcastHTML =
+      forcastHTML +
+      `<div class="col">
+          ${day},9
+          <br />
+          <i class="fa-solid fa-smog"></i>
+          <br />
+          5 / 10
+        </div>`;
+  });
+  forcastHTML = forcastHTML + `</div>`;
+  forcastElement.innerHTML = forcastHTML;
+}
+
 let element = document.querySelector("#form-input");
 element.addEventListener("submit", showCity);
 
@@ -107,3 +126,5 @@ let fahrenheitLink = document.querySelector("#fahrenheit");
 fahrenheitLink.addEventListener("click", displayFahrenheit);
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsius);
+
+displayForcast();
