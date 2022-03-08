@@ -33,14 +33,15 @@ function showCurrentLocation(response) {
   showTempMin.innerHTML = `${minTemp}`;
   let showTempMax = document.querySelector("#max");
   showTempMax.innerHTML = `${maxTemp}`;
-  let convertDescription = document.querySelector("h3");
+  let convertDescription = document.querySelector("#weather-description");
   convertDescription.innerHTML = `${description}`;
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-    iconElement.setAttribute("alt", ` response.data.weather[0].description`);
-
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", ` response.data.weather[0].description`);
+}
 function showCity(event) {
   event.preventDefault();
   let apiKey = "aa103043f0692bc32794207b314369d3";
