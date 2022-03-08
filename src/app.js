@@ -55,7 +55,6 @@ function showCity(event) {
   let city = document.querySelector("#search-input").value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showCurrentLocation);
-  console.log(showCity);
 }
 
 function showCurrent(response) {
@@ -110,25 +109,27 @@ function displayCelsius(event) {
   tempElement.innerHTML = celsiusTemperature;
 }
 
-function displayForcast() {
+function displayForcast(response) {
+  let forcast = response.data.daily;
   let forcastElement = document.querySelector("#forcast");
   let forcastHTML = `<div class="row">`;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
-  days.forEach(function (day) {
-    forcastHTML =
+  forcast.forEach(function(forcastDay, index){
+     forcastHTML =
       forcastHTML +
       `<div class="col">
           ${day},9
           <br />
-          <i class="fa-solid fa-smog"></i>
+         <img class="icon" id="icon" alt="Mostly cloudy" src="#" />
           <br />
-          5 / 10
+         <span class="forcast-temp-min>5</span> /
+         <span class="forcast-temp-max>10</span>
         </div>`;
-  });
+  })
+ 
   forcastHTML = forcastHTML + `</div>`;
   forcastElement.innerHTML = forcastHTML;
 }
-
+getCurrentLocation();
 let element = document.querySelector("#form-input");
 element.addEventListener("submit", showCity);
 
@@ -139,4 +140,3 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsius);
 
 displayForcast();
-getCurrentLocation();
