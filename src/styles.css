@@ -52,9 +52,9 @@ h1 {
 .celsius,
 .fahrenheit {
   font-size: 19px;
+  text-decoration: none;
   position: relative;
   bottom: 8px;
-  text-decoration: none;
 }
 .active {
   color: #000;
@@ -63,20 +63,20 @@ h1 {
 .icon {
   display: block;
   margin-top: 11px;
-  margin-right: -80px;
+  margin-right: -6px;
 }
 .weather-description {
   font-size: 25px;
 }
 .location {
-  text-align: center;
   font-size: 30px;
+  text-align: center;
 }
 p {
+  font-size: 15px;
   padding: 8px;
   margin-left: 23px;
   margin-bottom: -5px;
-  font-size: 15px;
 }
 .columns {
   border: 1px solid #000;
@@ -94,7 +94,7 @@ p {
 .col:hover {
   background-color: rgb(236, 236, 236);
   border-radius: 20px;
-  cursor: pointer;
+ 
 }
 .link {
   text-decoration: none;

@@ -58,14 +58,14 @@ function showCity(event) {
 }
 
 function showCurrent(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemperature = Math.round(response.data.main.temp);
   let min = Math.round(response.data.main.temp_min);
   let max = Math.round(response.data.main.temp_max);
   let currentDescription = response.data.weather[0].description;
   let currentCity = response.data.name;
   let currentCountry = response.data.sys.country;
   let changeTemp = document.querySelector("#temp");
-  changeTemp.innerHTML = `${temperature}`;
+  changeTemp.innerHTML = `${celsiusTemperature}`;
   let showMin = document.querySelector("#min");
   showMin.innerHTML = `${min}`;
   let showMax = document.querySelector("#max");
@@ -80,13 +80,14 @@ function showCurrent(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", ` response.data.weather[0].description`);
+  showForcast(response.data.coord);
 }
 function showCurrentLoc(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiKeyCurrent = "b2e49cf298a406cf6a9207e352668751";
-  let apiUrlCurrent = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKeyCurrent}&units=metric`;
-  axios.get(apiUrlCurrent).then(showCurrent);
+  let apiKey = "aa103043f0692bc32794207b314369d3";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showCurrent);
 }
 function getCurrentLocation() {
   navigator.geolocation.getCurrentPosition(showCurrentLoc);
@@ -156,5 +157,4 @@ fahrenheitLink.addEventListener("click", displayFahrenheit);
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsius);
 
-displayForcast();
 getCurrentLocation();
