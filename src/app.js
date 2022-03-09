@@ -109,27 +109,44 @@ function displayCelsius(event) {
   tempElement.innerHTML = celsiusTemperature;
 }
 
+function formatDay(times) {
+  let now = new Date(times * 1000);
+  let day = now.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 function displayForcast(response) {
   let forcast = response.data.daily;
   let forcastElement = document.querySelector("#forcast");
   let forcastHTML = `<div class="row">`;
-  forcast.forEach(function(forcastDay, index){
-     forcastHTML =
-      forcastHTML +
-      `<div class="col">
-          ${day},9
-          <br />
-         <img class="icon" id="icon" alt="Mostly cloudy" src="#" />
-          <br />
-         <span class="forcast-temp-min>5</span> /
-         <span class="forcast-temp-max>10</span>
+  forcast.forEach(function (forcastDay, index) {
+    if (index < 5) {
+      forcastHTML =
+        forcastHTML +
+        `<div class="col">
+        <div class="forcast-element">
+         <div class="forcast-date">${formatDay(forcastDay.dt)}</div>
+         <img src=" http://openweathermap.org/img/wn/${
+           forcastDay.weather[0].icon
+         }@2x.png" />
+         <div class= "forcast-temps">
+         <span class="forcast-temp-max">${Math.round(
+           forcastDay.temp.max
+         )}</span>
+         /
+         <span class="forcast-temp-min">${Math.round(
+           forcastDay.temp.min
+         )}</span>
+         </div>
+         </div>
         </div>`;
-  })
- 
+    }
+  });
+
   forcastHTML = forcastHTML + `</div>`;
   forcastElement.innerHTML = forcastHTML;
 }
-getCurrentLocation();
+
 let element = document.querySelector("#form-input");
 element.addEventListener("submit", showCity);
 
@@ -140,3 +157,4 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", displayCelsius);
 
 displayForcast();
+getCurrentLocation();

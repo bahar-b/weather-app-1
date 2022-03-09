@@ -19,7 +19,7 @@ body {
 form.nosubmit {
   display: block;
   margin: 0 auto;
- margin-left: 80px;
+  margin-left: 80px;
   padding: 0;
   border: none;
 }
@@ -86,7 +86,7 @@ p {
 }
 .col {
   margin: 5px;
-  padding: 10px;
+  padding: 0px;
   text-align: center;
   font-size: 19px;
   line-height: 65px;
