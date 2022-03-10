@@ -72,8 +72,8 @@ function showCurrent(response) {
   showMax.innerHTML = `${max}`;
   let changeDescription = document.querySelector("#weather-description");
   changeDescription.innerHTML = `${currentDescription}`;
-  let currentPos = document.querySelector("#location");
-  currentPos.innerHTML = `${currentCity}, ${currentCountry}`;
+  document.querySelector("#cityName").innerHTML = response.data.name;
+  document.querySelector("#countryName").innerHTML = response.data.sys.country;
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
